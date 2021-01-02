@@ -6,7 +6,7 @@
     $ele.find('.carousel-item:last').clone().prependTo($container);
     $ele.find('.carousel-item:eq(1)').clone().appendTo($container);
     // 初始化.container，.carousel-item宽度
-    this.len = $container.children().size();
+    this.len = $container.children().length;
     $container.width(this.len+'00%');
     $ele.find('.carousel-item').width((100/this.len)+'%');
     // 初始化轮播位置
@@ -100,6 +100,11 @@
           $ele.data('carousel',model = new Carousel($ele,options));
         }
         model[options] && model[options]();
+      })
+    },
+    slide(index){
+      return $(this).each(function(i,ele){
+        $(ele).data('carousel').slide(index);
       })
     }
   })

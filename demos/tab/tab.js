@@ -11,6 +11,7 @@
       $ele.trigger('tab',[this.index,this.$panel.eq(this.index)])
     }).showHide({animation})
     // 初始化panel默认项显示
+    this.$item.eq(this.index).addClass('active');
     this.$panel.eq(this.index).showHide('show');
     // 绑定事件实现切换tab
     if(trigger == 'mouse') trigger += 'enter';
@@ -54,7 +55,7 @@
 
   let defaults = {
     index: 0,
-    trigger: 'mouse',
+    trigger: 'click',
     animation: 'slient',
     delay: 150
   };

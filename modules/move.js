@@ -9,7 +9,7 @@
         y = typeof y === 'number' ? y : p.top;
         if(x === p.left && y === p.top) return $ele;
 
-        $ele.trigger('move')
+        return $ele.trigger('move')
         .animate({
           left: x,
           top: y,
@@ -17,6 +17,12 @@
           $(this).trigger('moved')
         });
       })
+    },
+    moveX(x){
+      return this.move(x);
+    },
+    moveY(y){
+      return this.move(null,y);
     }
   })
 

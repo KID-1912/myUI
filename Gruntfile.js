@@ -16,7 +16,7 @@
                  "demos-dist/tab/tab.js",
                  "demos-dist/dropdown/dropdown.js",
              ],
-             dest: "myUI.js"
+             dest: "src/myUI.js"
          }
      },
      uglify: {
@@ -24,7 +24,7 @@
          },
          dist: {
              files: {
-                 'myUI.min.js': 'myUI.js'
+                 'src/myUI.min.js': 'src/myUI.js'
              }
          }
      },
@@ -34,7 +34,7 @@
          },
          compress: {
              files: {
-                 'myUI.css': [
+                 'src/myUI.css': [
                      "demos/carousel/carousel.css",
                      "demos/tab/tab.css",
                  ]

@@ -10,10 +10,9 @@
    float: left;
  }
 
- .tab-body {
+ .tabs .tab-body {
    position: relative;
  }
-
  .tabs .tab-panel {
    position: absolute;
    width: 100%;

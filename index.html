@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="./demos/carousel/carousel.css">
+    <style>
+    *{padding: 0;margin: 0;}
+      .carousel{
+        width: 500px;
+      }
+      .yourClassname{
+/*        width: 10px;
+        height: 10px;
+        background-color: pink;*/
+      }
+    </style>
+  </head>
+  <body>
+    <button>test</button> 
+    <div id="yourIdOrClassName" class="carousel">
+      <div class="container">
+        <div class="carousel-item" style="background-color: pink">
+          <img class="carousel-pic" src="img/1.png" alt="">
+        </div>
+        <div class="carousel-item" style="background-color: skyblue">
+          <img class="carousel-pic" src="img/2.png" alt="">
+        </div>
+        <div class="carousel-item" style="background-color: green">
+          <img class="carousel-pic" src="img/3.png" alt="">
+        </div>
+      </div>
+      <ul class="indicator">
+        <li class="yourClassname"></li>
+        <li class="yourClassname"></li>
+        <li class="yourClassname"></li>
+      </ul>
+    </div>
+  </body>
+  <script src="./lib/jquery-3.4.1.min.js"></script>
+  <script src="./src/myUI.js"></script>
+  <script>
+    $('#yourIdOrClassName').carousel().on('slideIn',(e,i,$ele) => console.log('索引',i,'元素',$ele,'即将进入轮播视口'));
+  
+    $('button').on('click',function(){
+      $('#yourIdOrClassName').slide(3);
+    })
+  </script>
+</html>

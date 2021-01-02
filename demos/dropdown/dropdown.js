@@ -56,7 +56,7 @@
   $.fn.extend({
 
     drop(options){
-      $(this).each((i,ele) => {
+      return $(this).each((i,ele) => {
         let $ele = $(ele);
         let model = $ele.data('drop');
         if(!model){
@@ -64,7 +64,7 @@
           $ele.data('drop',model = new Dropdown($ele,options));
         }
         model[options] && model[options]();
-      })
+      });
     }
 
   })

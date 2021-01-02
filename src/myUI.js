@@ -9,13 +9,19 @@
         x = typeof x === 'number' ? x : p.left;
         y = typeof y === 'number' ? y : p.top;
         if (x === p.left && y === p.top) return $ele;
-        $ele.trigger('move').animate({
+        return $ele.trigger('move').animate({
           left: x,
           top: y
         }, function () {
           $(this).trigger('moved');
         });
       });
+    },
+    moveX: function moveX(x) {
+      return this.move(x);
+    },
+    moveY: function moveY(y) {
+      return this.move(null, y);
     }
   });
 })(jQuery);;"use strict";
@@ -302,7 +308,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     $ele.find('.carousel-item:last').clone().prependTo($container);
     $ele.find('.carousel-item:eq(1)').clone().appendTo($container); // 初始化.container，.carousel-item宽度
 
-    this.len = $container.children().size();
+    this.len = $container.children().length;
     $container.width(this.len + '00%');
     $ele.find('.carousel-item').width(100 / this.len + '%'); // 初始化轮播位置
 
@@ -412,6 +418,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
         model[options] && model[options]();
       });
+    },
+    slide: function slide(index) {
+      return $(this).each(function (i, ele) {
+        $(ele).data('carousel').slide(index);
+      });
     }
   });
 })(jQuery);;"use strict";
@@ -434,6 +445,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       animation: animation
     }); // 初始化panel默认项显示
 
+    this.$item.eq(this.index).addClass('active');
     this.$panel.eq(this.index).showHide('show'); // 绑定事件实现切换tab
 
     if (trigger == 'mouse') trigger += 'enter';
@@ -481,7 +493,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   };
   var defaults = {
     index: 0,
-    trigger: 'mouse',
+    trigger: 'click',
     animation: 'slient',
     delay: 150
   };
@@ -573,7 +585,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   };
   $.fn.extend({
     drop: function drop(options) {
-      $(this).each(function (i, ele) {
+      return $(this).each(function (i, ele) {
         var $ele = $(ele);
         var model = $ele.data('drop');
 
